@@ -33,10 +33,10 @@ header p{margin:6px 0 0;color:var(--muted);max-width:62ch}
 
 /* stage */
 .stage{background:var(--table);border-radius:18px;padding:clamp(20px,5vw,56px) clamp(12px,3vw,32px);overflow:hidden}
-.track{position:relative;width:100%;max-width:880px;margin:0 auto;aspect-ratio:880/470}
-.ticket{--w:46%;position:absolute;bottom:0;left:calc(50% - var(--w)/2);width:var(--w);aspect-ratio:709/473;
-  perspective:1400px;transform:translateY(-38%);transition:transform .7s cubic-bezier(.6,.05,.25,1)}
-.stage.open .ticket{transform:none}
+.track{position:relative;width:100%;max-width:880px;margin:0 auto;aspect-ratio:880/290}
+.ticket{--w:46%;position:absolute;top:0;left:calc(50% - var(--w)/2);width:var(--w);aspect-ratio:709/473;
+  perspective:1600px;transition:left .7s cubic-bezier(.6,.05,.25,1)}
+.stage.open .ticket{left:2%}
 .card{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .8s cubic-bezier(.6,.05,.25,1)}
 .stage.flipped .card{transform:rotateY(180deg)}
 .face{position:absolute;inset:0;border-radius:3%/4.5%;overflow:hidden;backface-visibility:hidden;
@@ -44,25 +44,25 @@ header p{margin:6px 0 0;color:var(--muted);max-width:62ch}
 .front{background-image:var(--f1)}
 .back{background-image:var(--f3);transform:rotateY(180deg)}
 .front{overflow:visible;transform-style:preserve-3d}
-.win{transform-style:preserve-3d;transition:visibility 0s linear .4s}
+.win{transition:visibility 0s linear .4s}
 .stage.flipped .win{visibility:hidden}
 
 /* the perforated window: inset 4% x / 9% y */
 .win{position:absolute;left:4%;top:9%;width:92%;height:82%}
 .reveal{position:absolute;inset:0;background-image:var(--f4);background-size:108.7% 122%;background-position:center;
   box-shadow:inset 0 3px 8px rgba(20,30,60,.35), inset 0 0 0 1px rgba(20,30,60,.15)}
-.flap{position:absolute;inset:0;transform-origin:50% 0;transform-style:preserve-3d;
+.flap{position:absolute;inset:0;transform-origin:100% 50%;transform-style:preserve-3d;
   transition:transform .9s cubic-bezier(.55,.05,.2,1) .15s;cursor:pointer}
-.stage.open .flap{transform:rotateX(168deg)}
+.stage.open .flap{transform:rotateY(-172deg)}
 .flap .side{position:absolute;inset:0;backface-visibility:hidden;background-size:108.7% 122%;background-position:center}
 .flap .out{background-image:var(--f1);outline:1.5px dashed rgba(255,255,255,.85);outline-offset:-1px}
-.flap .in{background-image:var(--f2);transform:rotateX(180deg);box-shadow:0 10px 22px -10px rgba(20,30,60,.5)}
+.flap .in{background-image:var(--f2);transform:rotateY(180deg);box-shadow:0 10px 22px -10px rgba(20,30,60,.5)}
 .flap .in::after{content:"";position:absolute;inset:0;outline:1.5px dashed rgba(255,255,255,.6);outline-offset:-1px;
-  background:linear-gradient(0deg,rgba(0,0,0,.08),transparent 30%)}
-.tab{position:absolute;left:50%;bottom:-4.2%;width:4.5%;aspect-ratio:1;transform:translateX(-50%) rotate(45deg);
-  background:inherit;background:var(--f1-tab, rgba(255,255,255,.55));border:1.5px dashed rgba(255,255,255,.9);border-left:0;border-top:0;backface-visibility:hidden}
-.hint{position:absolute;left:50%;top:100%;transform:translate(-50%,8px);font-size:12px;font-weight:600;color:var(--muted);
-  white-space:nowrap;pointer-events:none;transition:opacity .3s}
+  background:linear-gradient(90deg,rgba(0,0,0,.08),transparent 30%)}
+.tab{position:absolute;left:-3.2%;top:50%;width:4.5%;aspect-ratio:1;transform:translateY(-50%) rotate(45deg);
+  background:inherit;background:var(--f1-tab, rgba(255,255,255,.55));border:1.5px dashed rgba(255,255,255,.9);border-right:0;border-top:0;backface-visibility:hidden}
+.hint{position:absolute;left:-1%;top:50%;transform:translate(-100%,-50%);font-size:11px;font-weight:600;color:#fff;
+  text-shadow:0 1px 2px rgba(30,40,80,.5);white-space:nowrap;pointer-events:none;transition:opacity .3s}
 .stage.open .hint,.stage.flipped .hint{opacity:0}
 
 .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:clamp(18px,4vw,36px)}
@@ -108,7 +108,7 @@ figcaption span{color:var(--muted)}
                 <div class="tab" aria-hidden="true"></div>
               </div>
             </div>
-            <span class="hint">▲ 아래 탭을 잡고 위로 뜯어요</span>
+            <span class="hint">◀ 여기를 뜯어요</span>
           </div>
           <div class="face back" aria-label="뒤 외부: Who lives here?"></div>
         </div>
